@@ -1639,6 +1639,11 @@ runTests {
     };
   };
 
+  testImapAttrs = {
+    expr = attrsets.imapAttrs (i: name: value: value + i) {a = 1; b = 2; c = 3;};
+    expected = { a = 1; b = 3; c = 5; };
+  };
+
   testListCommonPrefixExample1 = {
     expr = lists.commonPrefix [ 1 2 3 4 5 6 ] [ 1 2 4 8 ];
     expected = [
